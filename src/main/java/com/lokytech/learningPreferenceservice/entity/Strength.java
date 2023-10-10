@@ -1,14 +1,18 @@
 package com.lokytech.learningPreferenceservice.entity;
 
+import com.lokytech.learningPreferenceservice.dto.Users;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Strength {
     @Id
     private Long strengthId;
-
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name="userId", referencedColumnName="userID", insertable=false, updatable=false)
+    private Users users;
 
     private String strengthType;
 }
