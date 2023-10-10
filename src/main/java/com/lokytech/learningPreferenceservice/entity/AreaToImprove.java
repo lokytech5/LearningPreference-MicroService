@@ -1,6 +1,7 @@
 package com.lokytech.learningPreferenceservice.entity;
 
 import com.lokytech.learningPreferenceservice.dto.UsersDTO;
+import com.lokytech.learningPreferenceservice.enums.AreaType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -14,12 +15,12 @@ public class AreaToImprove {
     @JoinColumn(name="userId", referencedColumnName="userID", insertable=false, updatable=false)
     private UsersDTO usersDTO;
 
-    private String areaType;
+    private AreaType areaType;
 
     public AreaToImprove() {
     }
 
-    public AreaToImprove(Long areaId, UsersDTO usersDTO, String areaType) {
+    public AreaToImprove(Long areaId, UsersDTO usersDTO, AreaType areaType) {
         this.areaId = areaId;
         this.usersDTO = usersDTO;
         this.areaType = areaType;
@@ -41,11 +42,11 @@ public class AreaToImprove {
         this.usersDTO = usersDTO;
     }
 
-    public String getAreaType() {
+    public AreaType getAreaType() {
         return areaType;
     }
 
-    public void setAreaType(String areaType) {
+    public void setAreaType(AreaType areaType) {
         this.areaType = areaType;
     }
 }

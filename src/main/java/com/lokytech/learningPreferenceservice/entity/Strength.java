@@ -1,6 +1,7 @@
 package com.lokytech.learningPreferenceservice.entity;
 
 import com.lokytech.learningPreferenceservice.dto.UsersDTO;
+import com.lokytech.learningPreferenceservice.enums.StrengthType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -14,12 +15,12 @@ public class Strength {
     @JoinColumn(name="userId", referencedColumnName="userID", insertable=false, updatable=false)
     private UsersDTO usersDTO;
 
-    private String strengthType;
+    private StrengthType strengthType;
 
     public Strength() {
     }
 
-    public Strength(Long strengthId, UsersDTO usersDTO, String strengthType) {
+    public Strength(Long strengthId, UsersDTO usersDTO, StrengthType strengthType) {
         this.strengthId = strengthId;
         this.usersDTO = usersDTO;
         this.strengthType = strengthType;
@@ -41,11 +42,11 @@ public class Strength {
         this.usersDTO = usersDTO;
     }
 
-    public String getStrengthType() {
+    public StrengthType getStrengthType() {
         return strengthType;
     }
 
-    public void setStrengthType(String strengthType) {
+    public void setStrengthType(StrengthType strengthType) {
         this.strengthType = strengthType;
     }
 }
