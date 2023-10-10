@@ -1,7 +1,9 @@
 package com.lokytech.learningPreferenceservice.dto;
 
-public class Users {
+public class UsersDTO {
     private Long id;
     private String username;
     private String email;
+
+
 }

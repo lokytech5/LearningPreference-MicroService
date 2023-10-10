@@ -1,6 +1,6 @@
 package com.lokytech.learningPreferenceservice.entity;
 
-import com.lokytech.learningPreferenceservice.dto.Users;
+import com.lokytech.learningPreferenceservice.dto.UsersDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -12,7 +12,7 @@ public class AreaToImprove {
     private Long areaId;
     @ManyToOne
     @JoinColumn(name="userId", referencedColumnName="userID", insertable=false, updatable=false)
-    private Users users;
+    private UsersDTO usersDTO;
 
     private String areaType;
 }
