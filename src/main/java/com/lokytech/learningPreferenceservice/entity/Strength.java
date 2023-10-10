@@ -2,10 +2,7 @@ package com.lokytech.learningPreferenceservice.entity;
 
 import com.lokytech.learningPreferenceservice.dto.UsersDTO;
 import com.lokytech.learningPreferenceservice.enums.StrengthType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Strength {
@@ -15,6 +12,7 @@ public class Strength {
     @JoinColumn(name="userId", referencedColumnName="userID", insertable=false, updatable=false)
     private UsersDTO usersDTO;
 
+    @Enumerated(EnumType.STRING)
     private StrengthType strengthType;
 
     public Strength() {
