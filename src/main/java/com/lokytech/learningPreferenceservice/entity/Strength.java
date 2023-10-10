@@ -15,4 +15,37 @@ public class Strength {
     private UsersDTO usersDTO;
 
     private String strengthType;
+
+    public Strength() {
+    }
+
+    public Strength(Long strengthId, UsersDTO usersDTO, String strengthType) {
+        this.strengthId = strengthId;
+        this.usersDTO = usersDTO;
+        this.strengthType = strengthType;
+    }
+
+    public Long getStrengthId() {
+        return strengthId;
+    }
+
+    public void setStrengthId(Long strengthId) {
+        this.strengthId = strengthId;
+    }
+
+    public UsersDTO getUsersDTO() {
+        return usersDTO;
+    }
+
+    public void setUsersDTO(UsersDTO usersDTO) {
+        this.usersDTO = usersDTO;
+    }
+
+    public String getStrengthType() {
+        return strengthType;
+    }
+
+    public void setStrengthType(String strengthType) {
+        this.strengthType = strengthType;
+    }
 }
