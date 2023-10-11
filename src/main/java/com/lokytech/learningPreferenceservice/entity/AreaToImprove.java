@@ -1,26 +1,22 @@
 package com.lokytech.learningPreferenceservice.entity;
-
-import com.lokytech.learningPreferenceservice.dto.UsersDTO;
 import com.lokytech.learningPreferenceservice.enums.AreaType;
 import jakarta.persistence.*;
 
 @Entity
 public class AreaToImprove {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long areaId;
-    @ManyToOne
-    @JoinColumn(name="userId", referencedColumnName="userID", insertable=false, updatable=false)
-    private UsersDTO usersDTO;
-
+    private Long userId;
     @Enumerated(EnumType.STRING)
     private AreaType areaType;
 
     public AreaToImprove() {
     }
 
-    public AreaToImprove(Long areaId, UsersDTO usersDTO, AreaType areaType) {
+    public AreaToImprove(java.lang.Long areaId, Long userId, AreaType areaType) {
         this.areaId = areaId;
-        this.usersDTO = usersDTO;
+        this.userId = userId;
         this.areaType = areaType;
     }
 
@@ -32,12 +28,12 @@ public class AreaToImprove {
         this.areaId = areaId;
     }
 
-    public UsersDTO getUsersDTO() {
-        return usersDTO;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUsersDTO(UsersDTO usersDTO) {
-        this.usersDTO = usersDTO;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public AreaType getAreaType() {

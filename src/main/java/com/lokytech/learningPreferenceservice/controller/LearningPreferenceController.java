@@ -17,7 +17,7 @@ public class LearningPreferenceController {
     @Autowired
     LearningPreferenceService preferenceService;
 
-    @PostMapping("/learningPreference")
+    @PostMapping("/preferences")
     public ResponseEntity<LearningPreference> createLearningPreference(@RequestBody LearningPreference learningPreference){
         LearningPreference preference = preferenceService.savePreference(learningPreference);
         return new ResponseEntity<>(preference, HttpStatus.CREATED);
