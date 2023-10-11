@@ -2,7 +2,10 @@ package com.lokytech.learningPreferenceservice.service;
 import com.lokytech.learningPreferenceservice.client.UsersClient;
 import com.lokytech.learningPreferenceservice.dto.UsersDTO;
 import com.lokytech.learningPreferenceservice.entity.LearningPreference;
+import com.lokytech.learningPreferenceservice.exception.ExternalServiceException;
+import com.lokytech.learningPreferenceservice.exception.UserNotFoundException;
 import com.lokytech.learningPreferenceservice.repository.LearningPreferenceRepository;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +18,21 @@ public class LearningPreferenceService {
     @Autowired
     private UsersClient usersClient;
 
-    public LearningPreference savePreference(LearningPreference learningPreference, Long userId){
-        UsersDTO user = usersClient.getUserById(userId);
-        learningPreference.setUserId(user.getId());
-        return preferenceRepository.save(learningPreference);
+    public LearningPreference savePreference(LearningPreference learningPreference, Long userId) {
+        try {
+            UsersDTO user = usersClient.getUserById(userId);
+            if (user == null || user.getId() == null) {
+                throw new UserNotFoundException("User with ID " + userId + " not found in user-service.");
+            }
+            learningPreference.setUserId(user.getId());
+            return preferenceRepository.save(learningPreference);
+        } catch (FeignException e) {
+            // Handle Feign-specific exceptions
+            if (e.status() == 404) {
+                throw new UserNotFoundException("User with ID " + userId + " not found in user-service.");
+            } else {
+                throw new ExternalServiceException("Error occurred when calling user-service: " + e.contentUTF8(), e);
+            }
+        }
     }
 }

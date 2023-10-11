@@ -1,7 +1,9 @@
 package com.lokytech.learningPreferenceservice.exception;
 
+import feign.FeignException;
+
 public class ExternalServiceException extends RuntimeException {
-    public ExternalServiceException(){
+    public ExternalServiceException(String s, FeignException e){
         super();
     }
 
