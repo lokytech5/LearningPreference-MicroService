@@ -1,6 +1,7 @@
 package com.lokytech.learningPreferenceservice.entity;
 import com.lokytech.learningPreferenceservice.enums.AreaType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class AreaToImprove {
@@ -9,6 +10,7 @@ public class AreaToImprove {
     private Long areaId;
     private Long userId;
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "AreaType cannot be null")
     private AreaType areaType;
 
     public AreaToImprove() {

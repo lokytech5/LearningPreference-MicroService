@@ -6,6 +6,7 @@ import com.lokytech.learningPreferenceservice.entity.AreaToImprove;
 import com.lokytech.learningPreferenceservice.entity.Strength;
 import com.lokytech.learningPreferenceservice.exception.UserNotFoundException;
 import com.lokytech.learningPreferenceservice.service.AreaToImproveService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class AreaToImproveController {
     AreaToImproveService areaToImproveService;
 
     @PostMapping("/areas/{userId}")
-    public ResponseEntity<AreaToImprove> createAreaToImprove(@PathVariable Long userId, @RequestBody AreaToImprove areaToImprove){
+    public ResponseEntity<AreaToImprove> createAreaToImprove(@PathVariable Long userId, @Valid @RequestBody AreaToImprove areaToImprove){
         AreaToImprove savedAreaToImprove = areaToImproveService.saveAreaToImprove(areaToImprove, userId);
         return new ResponseEntity<>(savedAreaToImprove, HttpStatus.CREATED);
     }
