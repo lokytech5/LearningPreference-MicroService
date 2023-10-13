@@ -2,6 +2,7 @@ package com.lokytech.learningPreferenceservice.entity;
 
 import com.lokytech.learningPreferenceservice.enums.PreferenceType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class LearningPreference {
@@ -10,6 +11,7 @@ public class LearningPreference {
     private Long preferenceId;
     private Long userId;
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "LearningPreference cannot be null")
     private PreferenceType preferenceType;
 
     public LearningPreference() {

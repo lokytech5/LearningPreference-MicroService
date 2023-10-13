@@ -5,6 +5,7 @@ import com.lokytech.learningPreferenceservice.dto.LearningPreferenceDTO;
 import com.lokytech.learningPreferenceservice.entity.LearningPreference;
 import com.lokytech.learningPreferenceservice.exception.UserNotFoundException;
 import com.lokytech.learningPreferenceservice.service.LearningPreferenceService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class LearningPreferenceController {
     LearningPreferenceService preferenceService;
 
     @PostMapping("/preferences/{userId}")
-    public ResponseEntity<LearningPreference> createLearningPreference(@PathVariable Long userId, @RequestBody LearningPreference learningPreference){
+    public ResponseEntity<LearningPreference> createLearningPreference(@PathVariable Long userId, @Valid @RequestBody LearningPreference learningPreference){
         LearningPreference preference = preferenceService.savePreference(learningPreference, userId);
         return new ResponseEntity<>(preference, HttpStatus.CREATED);
     }
