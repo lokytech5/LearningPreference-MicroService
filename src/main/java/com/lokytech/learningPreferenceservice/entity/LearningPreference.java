@@ -11,7 +11,7 @@ public class LearningPreference {
     private Long preferenceId;
     private Long userId;
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "LearningPreference cannot be null")
+    @NotNull(message = "LearningPreference Type cannot be null")
     private PreferenceType preferenceType;
 
     public LearningPreference() {

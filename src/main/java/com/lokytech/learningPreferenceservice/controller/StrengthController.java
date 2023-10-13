@@ -5,6 +5,7 @@ import com.lokytech.learningPreferenceservice.dto.StrengthDTO;
 import com.lokytech.learningPreferenceservice.entity.Strength;
 import com.lokytech.learningPreferenceservice.exception.UserNotFoundException;
 import com.lokytech.learningPreferenceservice.service.StrengthService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class StrengthController {
     StrengthService strengthService;
 
     @PostMapping("/strength/{userId}")
-    public ResponseEntity<Strength> createStrength(@PathVariable Long userId, @RequestBody Strength strength){
+    public ResponseEntity<Strength> createStrength(@PathVariable Long userId, @Valid @RequestBody Strength strength){
         Strength savedStrength = strengthService.saveStrength(strength, userId);
         return new ResponseEntity<>(savedStrength, HttpStatus.CREATED);
     }

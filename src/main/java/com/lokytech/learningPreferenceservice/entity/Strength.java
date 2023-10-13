@@ -2,6 +2,7 @@ package com.lokytech.learningPreferenceservice.entity;
 
 import com.lokytech.learningPreferenceservice.enums.StrengthType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Strength {
@@ -11,6 +12,7 @@ public class Strength {
     private Long userId;
 
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Strength type cannot be null")
     private StrengthType strengthType;
 
     public Strength() {
